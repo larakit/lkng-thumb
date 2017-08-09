@@ -14,7 +14,7 @@
         }
     ],
     "require": {
-        "larakit/lk-twig": "*",
+        "larakit/lk-thumb": "*",
         "larakit/ng-adminlte": "*"
     },
     "autoload": {
