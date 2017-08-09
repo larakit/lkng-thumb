@@ -1,0 +1,19 @@
+<div
+        ng-repeat="(type, thumber) in $ctrl.model.thumbs"
+        title="{{thumber.name}}"
+        ng-click="$ctrl.gotoStep2(type, thumber)"
+        class="box-overlay__wrap box-overlay__wrap--fade box-overlay__wrap--blue box-overlay__wrap--inline">
+    <div class="box-overlay">
+        <div class="box-overlay__label">
+            <i class="box-overlay__label-icon fa fa-folder-open-o"></i> <span class="box-overlay__label-text"></span>
+        </div>
+    </div>
+    <img
+            ng-if="thumber.sizes._.url" class="img-rounded pointer img-responsive img-thumbnail"
+            ng-class="{'img-circle':thumber.sizes._.is_round || $ctrl.isRound}"
+            ng-src="{{thumber.sizes._.url}}">
+    <img
+            ng-if="!thumber.sizes._.url" class="img-rounded pointer img-responsive img-thumbnail"
+            ng-class="{'img-circle':thumber.sizes._.is_round || $ctrl.isRound}"
+            ng-src="http://placehold.it/{{thumber.sizes._.w}}x{{thumber.sizes._.h}}">
+</div>

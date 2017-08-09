@@ -1,0 +1,63 @@
+.box-overlay__wrap {
+    cursor: pointer;
+    text-align : center;
+    overflow   : hidden;
+    position   : relative;
+}
+.box-overlay__wrap--inline {
+    display   : inline-block;
+    max-width : 100%;
+}
+.box-overlay {
+    background-color : rgba(0, 0, 0, .7);
+    bottom           : 100%;
+    display          : block;
+    left             : 0;
+    position         : absolute;
+    right            : 0;
+    text-align       : center;
+    top              : -100%;
+    transition       : all .3s ease 0s;
+    z-index          : 2;
+}
+.box-overlay__wrap:hover .box-overlay {
+    bottom : 0;
+    top    : 0;
+}
+.box-overlay__wrap--fade .box-overlay {
+    top        : 0;
+    bottom     : 0;
+    opacity    : 0;
+    transition : opacity .5s ease 0s;
+}
+.box-overlay__wrap--fade:hover .box-overlay {
+    opacity : 1;
+}
+.box-overlay__wrap--green .box-overlay {
+    background-color : rgba(0, 166, 90, .7);
+}
+.box-overlay__wrap--blue .box-overlay {
+    background-color : rgba(60, 141, 188, .7);
+}
+.box-overlay__wrap--red .box-overlay {
+    background-color : rgba(221, 75, 57, .7);
+}
+.box-overlay__label {
+    color       : #fff;
+    position    : absolute;
+    top         : 50%;
+    margin-top  : -12px;
+    left        : 0;
+    right       : 0;
+    text-align  : center;
+    font-size   : 24px;
+    line-height : 24px;
+}
+.box-overlay__label-icon {
+
+}
+.box-overlay__label-text {
+}
+.box-overlay__wrap--inline .box-overlay__label-text {
+    display : none;
+}

@@ -1,0 +1,68 @@
+<!--<pre>-->
+<!--{{$ctrl.model| json}}-->
+<!--</pre>-->
+<div class="modal-header">
+    <h3 class="modal-title">{{$ctrl.thumber.name}} / {{$ctrl.thumber.sizes[$ctrl.size].name}}
+        <small>(подрезка миниатюры)</small>
+    </h3>
+</div>
+<div class="modal-body" id="modal-body">
+    <div class="box box-solid box-default">
+        <div class="box-header with-border">
+            <h3 class="box-title">Коррекция миниатюры</h3>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="box box-default">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Управление</h3>
+                        </div>
+                        <div class="box-body">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <a class="btn btn-default btn-block" ng-click="$ctrl.buttonRotateLeft()">
+                                        <i class="fa fa-rotate-left"></i> повернуть против часовой <kbd>стрелка влево</kbd>
+                                    </a>
+                                </div>
+                                <div class="col-lg-6">
+                                    <a class="btn btn-default btn-block" ng-click="$ctrl.buttonRotateRight()">
+                                        <i class="fa fa-rotate-right"></i> повернуть по часовой <kbd>стрелка вправо</kbd>
+                                    </a>
+                                </div>
+                            </div>
+                            <hr>
+                            <img class="img-responsive" id="crop_img_original">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6" ng-if="$ctrl.w && $ctrl.h">
+                    <div class="box box-default">
+                        <div class="box-header with-border">
+                            <div class="pull-right">
+                        <span class="label  label-default">
+                            Ширина: {{$ctrl.w}}px
+                            <span ng-if="$ctrl.h">| Высота:{{$ctrl.h}}px</span>
+                        </span>
+                            </div>
+
+                            <h3 class="box-title">Предварительный просмотр результата</h3>
+                        </div>
+                        <div class="box-body">
+                            <img id="crop_img_final"
+                                 width="{{$ctrl.w}}" height="{{$ctrl.h}}" ng-src="{{dataScopped}}"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.box-body -->
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-primary" ng-click="$ctrl.ok()">Сохранить</button>
+        <button type="button" class="btn btn-danger" ng-click="$ctrl.cancel()">Отмена</button>
+    </div>
+</div>
+
+
