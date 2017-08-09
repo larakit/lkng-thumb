@@ -1,0 +1,29 @@
+{
+    "name": "larakit/lkng-thumbs",
+    "description": "[Larakit] [angular] Управление превьюшками",
+    "keywords": [
+        "laravel 5",
+        "laravel",
+        "larakit"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Alexey Berdnikov",
+            "email": "aberdnikov@gmail.com"
+        }
+    ],
+    "require": {
+        "larakit/lk-twig": "*",
+        "larakit/ng-adminlte": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Larakit\\": "src"
+        },
+        "files": [
+            "init.php"
+        ]
+    },
+    "minimum-stability": "dev"
+}
