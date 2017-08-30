@@ -15,7 +15,7 @@ Route::post('!/thumb/{model}/{id}/{type}/{size}/crop', function () {
     if($model) {
         $type        = \Request::route('type');
         $size        = \Request::route('size');
-        $thumb_class = \Illuminate\Support\Arr::get($model_class::thumbsConfig(), $type);
+        $thumb_class = \Illuminate\Support\Arr::get($model->thumbsConfig(), $type);
         if(class_exists($thumb_class)) {
             /** @var \Larakit\Thumb\Thumb $thumb */
             $thumb         = new $thumb_class($model->id);
