@@ -9,13 +9,17 @@
 //################################################################################
 //      загрузка превьюшки
 //################################################################################
-Route::post('!/thumb/{model}/{id}/{type}/{size}/crop', function () {
+Route::post(
+    '!/thumb/{model}/{id}/{type}/{size}/crop', function () {
     $model       = \Larakit\NgAdminlte\LkNgThumb::model();
     $model_class = \Larakit\NgAdminlte\LkNgThumb::modelClass();
     if($model) {
         $type        = \Request::route('type');
         $size        = \Request::route('size');
         $thumb_class = \Illuminate\Support\Arr::get($model->thumbsConfig(), $type);
+        if(is_array($thumb_class)) {
+            $thumb_class = \Illuminate\Support\Arr::get($thumb_class, 'thumb');
+        }
         if(class_exists($thumb_class)) {
             /** @var \Larakit\Thumb\Thumb $thumb */
             $thumb         = new $thumb_class($model->id);
@@ -33,9 +37,9 @@ Route::post('!/thumb/{model}/{id}/{type}/{size}/crop', function () {
             $crop_y_bottom = min($crop->height(), $crop_h + $y);
             $thumb_w       = $crop_x_right - $crop_x_left;
             $thumb_h       = $crop_y_bottom - $crop_y_top;
-            $crop
-                ->rotate(0 - $rotate)
-                ->crop($thumb_w, $thumb_h, $crop_x_left, $crop_y_top);
+            $crop->rotate(0 - $rotate)
+                 ->crop($thumb_w, $thumb_h, $crop_x_left, $crop_y_top)
+            ;
             
             $bg       = \Image::canvas($crop_w, $crop_h, null);
             $offset_x = ($x < 0) ? abs($x) : 0;
@@ -57,4 +61,7 @@ Route::post('!/thumb/{model}/{id}/{type}/{size}/crop', function () {
         'result'  => 'error',
         'message' => 'Изображение не загружено',
     ];
-})->name('thumb-crop');
+}
+)
+     ->name('thumb-crop')
+;
