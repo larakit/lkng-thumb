@@ -12,9 +12,9 @@
 //      Регистрация компонента страницы
 //##################################################
 $components_directory = '/packages/larakit/lkng-thumb/components/';
-\Larakit\NgAdminlte\LkNgComponent::register('adminlte-thumb-step1', $components_directory);
-\Larakit\NgAdminlte\LkNgComponent::register('adminlte-thumb-step2', $components_directory);
-\Larakit\NgAdminlte\LkNgComponent::register('adminlte-thumb-step3', $components_directory);
+\Larakit\LkNgComponent::register('adminlte-thumb-step1', $components_directory);
+\Larakit\LkNgComponent::register('adminlte-thumb-step2', $components_directory);
+\Larakit\LkNgComponent::register('adminlte-thumb-step3', $components_directory);
 
 \Larakit\StaticFiles\Manager::package('larakit/lkng-thumb')
     ->usePackage('larakit/ng-adminlte')
