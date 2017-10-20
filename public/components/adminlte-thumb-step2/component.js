@@ -1,7 +1,7 @@
 (function () {
 
     angular
-        .module('larakit')
+        .module('lkng-thumb')
         .component('adminlteThumbStep2', {
             templateUrl: '/packages/larakit/lkng-thumb/components/adminlte-thumb-step2/component.html',
             bindings: {

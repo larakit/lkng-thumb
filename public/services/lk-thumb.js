@@ -1,7 +1,10 @@
 (function () {
 
     angular
-        .module('larakit')
+        .module('lkng-thumb', []);
+
+    angular
+        .module('lkng-thumb')
         .factory('LkThumb', Factory);
 
     Factory.$inject = [];
