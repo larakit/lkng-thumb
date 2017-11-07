@@ -12,9 +12,9 @@
             controller: Controller
         });
 
-    Controller.$inject = ['$http', '$scope', '$timeout', 'hotkeys', 'safeApply', 'LkThumb'];
+    Controller.$inject = ['$http', '$scope', '$timeout', 'hotkeys', 'LkThumb'];
 
-    function Controller($http, $scope, $timeout, hotkeys, safeApply, LkThumb) {
+    function Controller($http, $scope, $timeout, hotkeys, LkThumb) {
         var data,
             $crop_img_final = $('#crop_img_final'),
             $crop_img_original = $('#crop_img_original'),
@@ -62,7 +62,7 @@
             $timeout(function () {
                 $crop_img_original.attr('src', LkThumb.refreshHash($ctrl.thumber.original));
                 console.log($crop_img_final.attr('width'), $crop_img_final.attr('height'));
-                console.log('$ctrl',$ctrl.w, $ctrl.h);
+                console.log('$ctrl', $ctrl.w, $ctrl.h);
                 if ($ctrl.w) {
                     $crop_img_final.attr('width', $ctrl.w);
                     $crop_img_original.css('width', $ctrl.w);
@@ -77,8 +77,7 @@
                     preview: '#crop_img_final',
                     minContainerHeight: 600,
                     crop: function (dataNew) {
-                        $scope.dataScopped = $crop_img_original.cropper('getCroppedCanvas').toDataURL('image/png');
-                        $scope.data = {
+                        $ctrl.data = {
                             x: dataNew.x,
                             y: dataNew.y,
                             rotate: dataNew.rotate,
@@ -91,7 +90,9 @@
                         }
                         $crop_img_final.attr('width', $ctrl.w);
                         $crop_img_final.attr('height', $ctrl.h);
-                        safeApply($scope);
+                        $timeout(function(){
+                            $scope.dataScopped = $crop_img_original.cropper('getCroppedCanvas').toDataURL('image/png');
+                        }, 100);
                     }
                 };
                 if ($ctrl.w && $ctrl.h) {
@@ -107,7 +108,7 @@
             $ctrl.dismiss({$value: 'cancel'});
         };
         $ctrl.ok = function () {
-            $http.post($ctrl.thumber.sizes[$ctrl.size].url_crop, $scope.data)
+            $http.post($ctrl.thumber.sizes[$ctrl.size].url_crop, $ctrl.data)
                 .then(function (response) {
                     larakit_toastr(response.data);
                     $ctrl.close();
