@@ -3,7 +3,7 @@
     angular
         .module('lkng-thumb')
         .component('adminlteThumbStep2', {
-            templateUrl: '/packages/larakit/lkng-thumb/components/adminlte-thumb-step2/component.html',
+            templateUrl: '/packages/larakit/lkng-thumb/components/adminlte-thumb-step2/component.html?'+Math.random(),
             bindings: {
                 resolve: '<',
                 close: '&',

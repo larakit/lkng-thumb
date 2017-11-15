@@ -15,7 +15,7 @@
             <h3 class="box-title">Подготовленные миниатюры</h3>
         </div>
         <!-- /.box-header -->
-        <div class="box-body">
+        <div class="box-body" style="display: block">
             <div class="panel box box-primary" ng-repeat="(size, thumb) in $ctrl.model.thumbs[$ctrl.type].sizes">
                 <div class="box-header with-border">
                     <div class="pull-right">
@@ -28,7 +28,7 @@
                         {{thumb.name}}
                     </h4>
                 </div>
-                <div class="box-body">
+                <div class="box-body" style="display: block">
                     <div class="crop-box-container
                         box-overlay__wrap box-overlay__wrap--fade
                         box-overlay__wrap--blue
